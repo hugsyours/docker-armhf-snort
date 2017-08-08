@@ -4,7 +4,7 @@ Dockerfile for armhf on Ubuntu14.04 in snort
 # Build ths container
 sudo docker build -t="{name}/{containername}:{version}" .
 
-Example;
+Example; \n
 sudo docker build -t="myproject/snort:1.0" .
 
 # Instructions
