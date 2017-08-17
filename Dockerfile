@@ -1,6 +1,6 @@
 #sudo docker build -t="mylamp/lamp:v1" .
-FROM armv7/armhf-ubuntu:14.04
-#FROM ubuntu:14.04
+#FROM armv7/armhf-ubuntu:14.04
+FROM ubuntu:14.04
 MAINTAINER Opart Moxes
 # Install Requirements
 RUN apt-get update && apt-get install -y build-essential libpcap-dev libpcre3-dev libdumbnet-dev \
@@ -89,8 +89,8 @@ tar zxvf barnyard2-2-1.13.tar.gz
 WORKDIR /root/snort_src/barnyard2-2-1.13
 
 RUN autoreconf -fvi -I ./m4 && \
-./configure --with-mysql --with-mysql-libraries=/usr/lib/arm-linux-gnueabihf && \
-#./configure --with-mysql --with-mysql-libraries=/usr/lib/x86_64-linux-gnu && \
+#./configure --with-mysql --with-mysql-libraries=/usr/lib/arm-linux-gnueabihf && \
+./configure --with-mysql --with-mysql-libraries=/usr/lib/x86_64-linux-gnu && \
 make -j3 && \
 sudo make install && \
 sudo ln -s /usr/include/dumbnet.h /usr/include/dnet.h && \
