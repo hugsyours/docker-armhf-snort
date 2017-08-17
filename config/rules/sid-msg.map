@@ -1,0 +1,7 @@
+#v2
+
+1 || 1000001 || 001 || icmp-event || 0 || ICMP Test detected || url,tools.ietf.org/html/rfc792
+
+2 || 1000002 || 001 || inappropriate-content || 0 || UDP test detected || url,tools.ietf.org/html/rfc792
+
+3 || 1000003 || 001 || tcp-connection || 0 || TCP Test detected || url,tools.ietf.org/html/rfc792
