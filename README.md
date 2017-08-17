@@ -1,5 +1,5 @@
 # docker-armhf-snort
-Dockerfile for armhf on Ubuntu14.04 in snort
+Dockerfile for amd64 on Ubuntu14.04 / snort
 
 # Build ths container
 sudo docker build -t="{name}/{containername}:{version}" .
