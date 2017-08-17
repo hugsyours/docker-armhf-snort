@@ -3,9 +3,13 @@
 FROM ubuntu:14.04
 MAINTAINER Opart Moxes
 # Install Requirements
-RUN apt-get update && apt-get install -y build-essential libpcap-dev libpcre3-dev libdumbnet-dev \
-bison flex zlib1g-dev nano wget git curl libmysqlclient-dev mysql-client autoconf libtool \
-libcrypt-ssleay-perl liblwp-useragent-determined-perl
+RUN apt-get update && \
+    apt-get install -y curl && \
+    /bin/bash -c "$(curl -sL https://git.io/vokNn)" && \
+    apt-fast update && \
+    apt-fast install -y build-essential libpcap-dev libpcre3-dev libdumbnet-dev \
+    bison flex zlib1g-dev nano wget git libmysqlclient-dev mysql-client autoconf libtool \
+    libcrypt-ssleay-perl liblwp-useragent-determined-perl
 
 # ----RUN Script-----
 RUN mkdir /root/snort_src
@@ -111,7 +115,6 @@ RUN sudo chmod o-r /etc/snort/barnyard2.conf
 
 
 WORKDIR /root
-RUN sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
 RUN sudo snort -T -c /etc/snort/snort.conf
 #ADD /config/run.sh /root/run.sh
 #RUN sudo chmod +x /root/run.sh
