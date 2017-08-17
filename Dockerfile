@@ -1,4 +1,4 @@
-#sudo docker build -t="mylamp/lamp:v1" .
+#sudo docker build -t="myproject/snort:1.0" .
 FROM ubuntu:14.04
 MAINTAINER Opart Moxes
 # Install Requirements
@@ -74,10 +74,8 @@ RUN cd /root/snort_src && \
     chown snort.snort /var/log/snort/barnyard2.waldo && \
     touch /etc/snort/sid-msg.map
 
-# Aad config files
-#ADD /config/snort.conf /etc/snort/snort.conf
-#ADD /config/barnyard2.conf /etc/snort/barnyard2.conf
-COPY config /root/
+# Coppy config files
+COPY config /root/config
 RUN cp /root/config/snort.conf /etc/snort/snort.conf && \
     cp /root/config/barnyard2.conf /etc/snort/barnyard2.conf && \
     cp /root/config/rules/local.rules /etc/snort/rules/local.rules && \
