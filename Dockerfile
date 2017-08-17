@@ -1,5 +1,6 @@
 #sudo docker build -t="mylamp/lamp:v1" .
 FROM armv7/armhf-ubuntu:14.04
+#FROM ubuntu:14.04
 MAINTAINER Opart Moxes
 # Install Requirements
 RUN apt-get update && apt-get install -y build-essential libpcap-dev libpcre3-dev libdumbnet-dev \
@@ -89,6 +90,7 @@ WORKDIR /root/snort_src/barnyard2-2-1.13
 
 RUN autoreconf -fvi -I ./m4 && \
 ./configure --with-mysql --with-mysql-libraries=/usr/lib/arm-linux-gnueabihf && \
+#./configure --with-mysql --with-mysql-libraries=/usr/lib/x86_64-linux-gnu && \
 make -j3 && \
 sudo make install && \
 sudo ln -s /usr/include/dumbnet.h /usr/include/dnet.h && \
@@ -124,3 +126,11 @@ ADD /config/snort.conf /etc/snort/snort.conf
 ADD /config/barnyard2.conf /etc/snort/barnyard2.conf
 ADD /config/pulledpork.conf /etc/snort/pulledpork.conf
 RUN sudo chmod o-r /etc/snort/barnyard2.conf
+
+
+WORKDIR /root
+RUN sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
+RUN sudo snort -T -c /etc/snort/snort.conf
+#ADD /config/run.sh /root/run.sh
+#RUN sudo chmod +x /root/run.sh
+#CMD ["/bin/sh", "-l", "-c", "/root/run.sh"]
