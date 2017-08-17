@@ -103,28 +103,10 @@ sudo chown snort.snort /var/log/snort/barnyard2.waldo && \
 sudo touch /etc/snort/sid-msg.map
 
 
-# End Barnyard2 Install
-
-# Start Pulledpork Install
-WORKDIR /root/snort_src/
-
-RUN wget https://github.com/finchy/pulledpork/archive/66241690356d54faa509625a78f80f326b75c339.tar.gz -O pulledpork-0.7.2-194.tar.gz && \
-tar xvfvz pulledpork-0.7.2-194.tar.gz && \
-mv pulledpork-66241690356d54faa509625a78f80f326b75c339 pulledpork-0.7.2-194
-
-WORKDIR /root/snort_src/pulledpork-0.7.2-194/
-
-RUN sudo cp pulledpork.pl /usr/local/bin && \
-sudo chmod +x /usr/local/bin/pulledpork.pl  && \
-sudo cp etc/*.conf /etc/snort
-
-# End Pulledpork Install
-
 #ADD config files
 
 ADD /config/snort.conf /etc/snort/snort.conf
 ADD /config/barnyard2.conf /etc/snort/barnyard2.conf
-ADD /config/pulledpork.conf /etc/snort/pulledpork.conf
 RUN sudo chmod o-r /etc/snort/barnyard2.conf
 
 
