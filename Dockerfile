@@ -75,9 +75,14 @@ RUN cd /root/snort_src && \
     touch /etc/snort/sid-msg.map
 
 # Aad config files
-ADD /config/snort.conf /etc/snort/snort.conf
-ADD /config/barnyard2.conf /etc/snort/barnyard2.conf
-RUN chmod o-r /etc/snort/barnyard2.conf && \
+#ADD /config/snort.conf /etc/snort/snort.conf
+#ADD /config/barnyard2.conf /etc/snort/barnyard2.conf
+COPY config /root/
+RUN cp /root/config/snort.conf /etc/snort/snort.conf && \
+    cp /root/config/barnyard2.conf /etc/snort/barnyard2.conf && \
+    cp /root/config/rules/local.rules /etc/snort/rules/local.rules && \
+    cp /root/config/rules/sid-msg.map /etc/snort/sid-msg.map && \
+    chmod o-r /etc/snort/barnyard2.conf && \
     snort -T -c /etc/snort/snort.conf
 WORKDIR /root
 #ADD /config/run.sh /root/run.sh
