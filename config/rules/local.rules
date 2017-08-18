@@ -1,5 +1,6 @@
-alert icmp any any -> $HOME_NET any (msg:"ICMP test detected"; GID:1; sid:1000001; rev:001; classtype:icmp-event;)
+alert icmp any any -> 192.168.1.36 any (msg:"ICMP test detected"; threshold: type limit, track by_src, seconds 5, count 1;  GID:1; sid:1000001; rev:001; classtype:icmp-event;)
 
-alert udp any any -> $HOME_NET 8083 (msg: "UDP test detected"; GID:2; sid:1000002; rev:001; classtype:inappropriate-content;)
+alert udp any any -> 192.168.1.36 any (msg: "UDP test detected"; threshold: type limit, track by_src, seconds 5, count 1; GID:2; sid:1000002; rev:001; classtype:inappropriate-content;)
 
-alert tcp any any -> $HOME_NET 8084 (msg:"TCP test detected"; GID:3; sid:1000003; rev:001; classtype:tcp-connection;)
+alert tcp any any -> 192.168.1.36 3000 (msg:"TCP test detected"; threshold: type limit, track by_src, seconds 5, count 1; GID:3; sid:1000003; rev:001; classtype:denial-of-service;)
+
