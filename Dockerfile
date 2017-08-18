@@ -63,7 +63,7 @@ RUN cd /root/snort_src && \
     tar zxvf barnyard2-2-1.13.tar.gz && \
     cd /root/snort_src/barnyard2-2-1.13 && \
     autoreconf -fvi -I ./m4 && \
-    ./configure --with-mysql --with-mysql-libraries=/usr/lib/arm-linux-gnueabihf && \
+    ./configure --with-mysql --with-mysql-libraries=/usr/lib/x86_64-linux-gnu && \
     make -j3 && \
     make install && \
     ln -s /usr/include/dumbnet.h /usr/include/dnet.h && \
