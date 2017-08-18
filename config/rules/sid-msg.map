@@ -4,4 +4,4 @@
 
 2 || 1000002 || 001 || inappropriate-content || 0 || UDP test detected || url,tools.ietf.org/html/rfc792
 
-3 || 1000003 || 001 || tcp-connection || 0 || TCP Test detected || url,tools.ietf.org/html/rfc792
+3 || 1000003 || 001 || denial-of-service || 0 || TCP Test detected || url,tools.ietf.org/html/rfc792
